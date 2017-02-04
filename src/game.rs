@@ -1,20 +1,21 @@
+#[derive(RustcDecodable, RustcEncodable)]
 pub struct Game {
-    name: String,
-    original_platforms: Vec<String>
+    pub name: String,
+    pub original_platforms: Vec<String>
 }
 
 pub struct GameEdition {
-    game: Game,
-    name: String,
-    platform: String
+    pub game: Game,
+    pub name: String,
+    pub platform: String
 }
 
 pub struct GameContent {
-    game: Game,
-    name: String,
+    pub game: Game,
+    pub name: String,
 }
 
-pub struct ContentEdition {
-    content: GameContent,
-    edition: GameEdition
+pub struct GameContentEdition {
+    pub content: GameContent,
+    pub edition: GameEdition
 }
