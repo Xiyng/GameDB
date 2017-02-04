@@ -1,5 +1,5 @@
 [package]
-name = "GameDB"
+name = "game_db"
 version = "0.1.0"
 authors = ["Xiyng <xiyng.dev@gmail.com>"]
 
