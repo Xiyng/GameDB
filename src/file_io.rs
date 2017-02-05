@@ -4,7 +4,27 @@ use std::error::Error;
 use std::io::{Read, Write};
 use std::fs::File;
 use rustc_serialize::json;
-use game::{Game, GameEdition, GameContent, GameContentEdition};
+use game_data::{GameCollection, Game, GameEdition, GameContent, GameContentEdition};
+
+fn load(path: &str) -> GameCollection {
+    let games = read_games(path);
+    let game_editions = read_game_editions(path);
+    let game_contents = read_game_contents(path);
+    let game_content_editions = read_game_content_editions(path);
+    GameCollection {
+        games: games,
+        game_editions: game_editions,
+        game_contents: game_contents,
+        game_content_editions: game_content_editions
+    }
+}
+
+fn save(path: &str, game_collection: &GameCollection) -> () {
+    write_games(path, &game_collection.games);
+    write_game_editions(path, &game_collection.game_editions);
+    write_game_contents(path, &game_collection.game_contents);
+    write_game_content_editions(path, &game_collection.game_content_editions)
+}
 
 pub fn write_games(path: &str, games: &Vec<Game>) -> () {
     write(path, games, "Couldn't save the games file", "")
